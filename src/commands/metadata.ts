@@ -26,6 +26,10 @@ export const ChatCommandMetadata: {
             {
                 ...Args.FAUCET_TOKEN_OPTION,
                 required: true
+            },
+            {
+                ...Args.ADDRESS_OPTION,
+                required: true
             }
         ]
     },

@@ -1,7 +1,7 @@
 {
     "bot": {
-        "name": "LW3 Faucet",
-        "author": "LW3DAO"
+        "name": "Faucet Bot",
+        "author": "Chiin"
     },
     "emojis": {
         "yes": "✅",
@@ -25,7 +25,7 @@
     "links": {
         "author": "https://github.com/AlanRacciatti",
         "template": "https://github.com/KevinNovak/Discord-Bot-TypeScript-Template",
-        "faucetTemplate": "https://github.com/AlanRacciatti/lw3-faucet",
+        "faucetTemplate": "https://github.com/AlanRacciatti/faucet-discord-bot",
         "support": "https://twitter.com/RockChiin"
     }
 }

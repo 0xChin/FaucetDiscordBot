@@ -81,16 +81,17 @@
             "viewDateSent": "View Date Sent"
         },
         "arguments": {
-            "option": "option",
             "network": "network",
-            "token": "token"
+            "token": "token",
+            "address": "address"
         },
         "commandDescs": {
             "faucet": "Request tokens for a network."
         },
         "argDescs": {
             "network": "Network.",
-            "token": "Token."
+            "token": "Token.",
+            "address": "Address."
         },
         "fields": {
             "commands": "Commands",

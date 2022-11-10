@@ -11,19 +11,22 @@ export class FaucetCommand implements Command {
     public requireClientPerms: PermissionsString[] = [];
     public async execute(intr: ChatInputCommandInteraction, data: EventData): Promise<void> {
 
-        let network = intr.options.getString(
+        let network: string = intr.options.getString(
             Lang.getRef('arguments.network', Language.Default)
         )
 
-        let token = intr.options.getString(
+        let token: string = intr.options.getString(
             Lang.getRef('arguments.token', Language.Default)
+        )
+
+        let address: string = intr.options.getString(
+            Lang.getRef('arguments.address', Language.Default)
         )
 
         let embed: EmbedBuilder;
 
-        const { id } = intr.user;
-        const address: string | null = await FaucetUtils.getAddressFromId(id);
-        const nextRequest: string | null = await FaucetUtils.nextRequest(address, network, token);
+        const { id: userId } = intr.user;
+        const nextRequest: string | null = await FaucetUtils.nextRequest(userId, network, token);
         const isTokenSupported: boolean = await FaucetUtils.isTokenSupported(network, token);
         const canRequestTokens: boolean = !nextRequest // If nextRequest is null, address can request token
 
@@ -37,7 +40,7 @@ export class FaucetCommand implements Command {
                 let faucetHasBalance: boolean = await FaucetUtils.hasBalance(network, token)
                 if (faucetHasBalance) {
                     let txLink = await FaucetUtils.sendTokens(address, network, token);
-                    FaucetUtils.updateRequestCooldown(address, network, token);
+                    FaucetUtils.updateRequestCooldown(userId, network, token);
                     embed = Lang.getEmbed('faucetEmbeds.transaction', data.lang, {
                         network,
                         token,

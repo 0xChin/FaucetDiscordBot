@@ -42,7 +42,7 @@ interface Networks {
         chainId: number;
         tokens: {
             [token: string]: {
-                amount: number;
+                amount: number; // @notice that this amount is measured in ETH
                 address?: string;
                 isNativeToken?: boolean;
             };
@@ -69,22 +69,6 @@ interface Networks {
 -   Written with [ESM](https://nodejs.org/api/esm.html#introduction) for future compatibility with packages.
 -   Support for running with the [PM2](https://pm2.keymetrics.io/) process manger.
 -   Support for running with [Docker](https://www.docker.com/).
-
-### Connecting to LW3 Backend:
-
-To send the address based on the Discord ID, you will need to connect to your backend. I've created a function in [faucet-utils.ts](https://github.com/AlanRacciatti/lw3-faucet/blob/main/src/utils/faucet-utils.ts) that you'll have to complete and then the bot will be ready to go
-
-```typescript
-export class FaucetUtils {
-    public static async getAddressFromId(id: string): Promise<string | null> {
-        // TODO: Connect to LW3 backend plz
-
-        return '0x6864dC5998c25Db320D3370A53592E44a246FFf4'; // chiin.eth :)
-    }
-
-    // More stuff here...
-}
-```
 
 ## Setup
 
@@ -114,3 +98,100 @@ export class FaucetUtils {
         - It may take up to an hour for command changes to appear.
 6. Start the bot.
     - Run `npm start` and let the faucet send funds to your students :).
+
+## Support
+
+### Connecting to LW3 Backend:
+
+To send the address based on the Discord ID, you will need to connect to your backend. I've created a function in [faucet-utils.ts](https://github.com/AlanRacciatti/lw3-faucet/blob/main/src/utils/faucet-utils.ts) that you'll have to complete and then the bot will be ready to go
+
+```typescript
+export class FaucetUtils {
+    public static async getAddressFromId(id: string): Promise<string | null> {
+        // TODO: Connect to LW3 backend plz
+
+        return '0x6864dC5998c25Db320D3370A53592E44a246FFf4'; // chiin.eth :)
+    }
+
+    // More stuff here...
+}
+```
+
+### Adding new tokens/networks
+
+Supposing we have the following `networks` property in our `config.json`:
+
+```json
+"networks": {
+        "GOERLI": {
+            "chainId": 5,
+            "tokens": {
+                "ETH": {
+                    "amount": 0.001,
+                    "isNativeToken": true
+                }
+            },
+            "blockExplorer": "https://goerli.etherscan.io/tx/",
+            "nodeUri": "<node-uri>"
+        },
+```
+
+##### Adding new tokens
+
+We have to add a new property in the `tokens` object with the name of our token, and add a `amount` and `address` field. For example, for adding the LINK token, we should do it this way:
+
+```json
+"networks": {
+        "GOERLI": {
+            "chainId": 5,
+            "tokens": {
+                "ETH": {
+                    "amount": 0.001,
+                    "isNativeToken": true
+                },
+                "LINK": {
+                    "amount": 0.1,
+                    "address": "0x326C977E6efc84E512bB9C30f76E30c160eD06FB"
+                }
+            },
+            "blockExplorer": "https://goerli.etherscan.io/tx/",
+            "nodeUri": "<node-uri>"
+        },
+```
+
+After making this change, run `npm run update:faucet` to update the commands
+
+##### Adding new networks
+
+We have to add a new property in the `networks` object with the name of the network and add the fields: `chainId`, `blockExplorer` & `nodeUri`. For adding the mumbai network with the LINK token, we should do it this way:
+
+```json
+        "GOERLI": {
+            "chainId": 5,
+            "tokens": {
+                "ETH": {
+                    "amount": 0.001,
+                    "isNativeToken": true
+                },
+                "LINK": {
+                    "amount": 0.1,
+                    "address": "0x326C977E6efc84E512bB9C30f76E30c160eD06FB"
+                }
+            },
+            "blockExplorer": "https://goerli.etherscan.io/tx/",
+            "nodeUri": "<node-uri>"
+        },
+        "MUMBAI": {
+            "chainId": 80001,
+            "tokens": {
+                "LINK": {
+                    "amount": 0.1,
+                    "address": "0x326C977E6efc84E512bB9C30f76E30c160eD06FB"
+                }
+            },
+            "blockExplorer": "https://mumbai.polygonscan.com/tx/",
+            "nodeUri": "<node-uri>"
+        }
+```
+
+After making this change, run `npm run update:faucet` to update the commands

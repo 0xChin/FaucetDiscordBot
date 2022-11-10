@@ -15,5 +15,5 @@ export class RequestCooldown extends BaseEntity {
     network: string
 
     @Column("text")
-    address: string
+    userId: string
 }

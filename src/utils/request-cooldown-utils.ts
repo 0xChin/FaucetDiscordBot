@@ -2,12 +2,12 @@ import { AppDataSource, RequestCooldown } from "../database/index.js";
 
 export class RequestCooldownUtils {
     public static async get(
-        address: string,
+        userId: string,
         network: string,
         token: string
     ): Promise<RequestCooldown | null> {
         const result = await RequestCooldown.findOneBy({
-            address,
+            userId,
             network,
             token
         })
@@ -16,12 +16,12 @@ export class RequestCooldownUtils {
     }
 
     public static async createOrUpdate(
-        address: string,
+        userId: string,
         network: string,
         token: string
     ) {
         let request: RequestCooldown
-        request = await this.get(address, network, token);
+        request = await this.get(userId, network, token);
 
         if (request) {
             request.lastRequest = new Date();
@@ -30,7 +30,7 @@ export class RequestCooldownUtils {
             request.lastRequest = new Date();
             request.network = network;
             request.token = token;
-            request.address = address;
+            request.userId = userId;
         }
 
         await AppDataSource.manager.save(request);

@@ -47,4 +47,11 @@ export class Args {
             }
         })
     };
+    public static readonly ADDRESS_OPTION: APIApplicationCommandBasicOption = {
+        name: Lang.getRef('arguments.address', Language.Default),
+        name_localizations: Lang.getRefLocalizationMap('arguments.address'),
+        description: Lang.getRef('argDescs.address', Language.Default),
+        description_localizations: Lang.getRefLocalizationMap('argDescs.address'),
+        type: ApplicationCommandOptionType.String,
+    }
 }
