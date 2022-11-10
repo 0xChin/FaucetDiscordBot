@@ -13,7 +13,6 @@ import {
 import { Logger } from '../services/index.js';
 
 const require = createRequire(import.meta.url);
-let Debug = require('../../config/debug.json');
 let Logs = require('../../lang/logs.json');
 
 export class Bot {
@@ -53,13 +52,6 @@ export class Bot {
     }
 
     private async onInteraction(intr: Interaction): Promise<void> {
-        if (
-            !this.ready ||
-            (Debug.dummyMode.enabled && !Debug.dummyMode.whitelist.includes(intr.user.id))
-        ) {
-            return;
-        }
-
         if (intr instanceof CommandInteraction || intr instanceof AutocompleteInteraction) {
             try {
                 await this.commandHandler.process(intr);
