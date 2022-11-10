@@ -7,15 +7,15 @@ import {
     ChatCommandMetadata,
     Command
 } from './commands/index.js';
+import { InitializeDb } from './database/index.js';
+import { CommandHandler } from './events/command-handler.js';
 import { CustomClient } from './extensions/index.js';
 import { Bot } from './models/bot.js';
 import {
+    CommandRegistrationService,
     EventDataService,
-    Logger,
-    CommandRegistrationService
+    Logger
 } from './services/index.js';
-import { InitializeDb } from './database/index.js';
-import { CommandHandler } from './events/command-handler.js';
 
 const require = createRequire(import.meta.url);
 let Config = require('../config/config.json');

@@ -1,19 +1,19 @@
-import { Column, Entity, PrimaryGeneratedColumn, BaseEntity } from "typeorm"
+import { BaseEntity, Column, Entity, PrimaryGeneratedColumn } from 'typeorm'
 
 @Entity()
 export class RequestCooldown extends BaseEntity {
     @PrimaryGeneratedColumn()
     id: number
 
-    @Column("timestamp")
+    @Column('timestamp')
     lastRequest: Date
 
-    @Column("text")
+    @Column('text')
     token: string
 
-    @Column("text")
+    @Column('text')
     network: string
 
-    @Column("text")
+    @Column('text')
     userId: string
 }

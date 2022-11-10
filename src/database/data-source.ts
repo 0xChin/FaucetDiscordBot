@@ -1,13 +1,14 @@
-import { DataSource } from "typeorm";
 import { createRequire } from 'node:module';
-import { RequestCooldown } from "./request-cooldown-entity.js";
-import "reflect-metadata";
+import { DataSource } from 'typeorm';
+
+import { RequestCooldown } from './request-cooldown-entity.js';
+import 'reflect-metadata';
 
 const require = createRequire(import.meta.url);
 let Config = require('../../config/config.json');
 
 export const AppDataSource = new DataSource({
-    type: "postgres",
+    type: 'postgres',
     host: Config.database.host,
     port: Config.database.port,
     username: Config.database.username,

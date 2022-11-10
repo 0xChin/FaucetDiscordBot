@@ -1,4 +1,4 @@
-import { AppDataSource, RequestCooldown } from "../database/index.js";
+import { AppDataSource, RequestCooldown } from '../database/index.js';
 
 export class RequestCooldownUtils {
     public static async get(
@@ -19,7 +19,7 @@ export class RequestCooldownUtils {
         userId: string,
         network: string,
         token: string
-    ) {
+    ): Promise<void> {
         let request: RequestCooldown
         request = await this.get(userId, network, token);
 

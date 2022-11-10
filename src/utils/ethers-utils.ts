@@ -1,20 +1,22 @@
-import { createRequire } from 'node:module';
-import { BigNumber, Contract, ethers, providers, Wallet } from 'ethers';
 import { CeloProvider, CeloWallet } from '@celo-tools/celo-ethers-wrapper';
+import { BigNumber, Contract, ethers, providers, Wallet } from 'ethers';
+import { createRequire } from 'node:module';
+
 import { Networks } from './faucet-utils.js';
 
 const require = createRequire(import.meta.url);
-let Config = require('../../config/config.json');
 let abi = require('erc-20-abi');
+
+let Config = require('../../config/config.json');
 
 const networks: Networks = Config.networks;
 const privateKey = Config.privateKey;
 
 export class EthersUtils {
-    private static async getSigner(network): Promise<Wallet> {
+    private static async getSigner(network: string): Promise<Wallet> {
         let signer: Wallet;
 
-        if (network === "ALFAJORES") { // Celo needs a specific provider, it sucks right?
+        if (network === 'ALFAJORES') { // Celo needs a specific provider, it sucks right?
             const provider = new CeloProvider(networks[network].nodeUri);
             await provider.ready;
             signer = new CeloWallet(privateKey, provider);
