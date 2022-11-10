@@ -116,17 +116,6 @@
             },
             "blockExplorer": "https://mumbai.polygonscan.com/tx/",
             "nodeUri": "<node-uri>"
-        },
-        "ALFAJORES": {
-            "chainId": 44787,
-            "tokens": {
-                "CELO": {
-                    "amount": 0.1,
-                    "isNativeToken": true
-                }
-            },
-            "blockExplorer": "https://explorer.celo.org/alfajores/tx/",
-            "nodeUri": "<node-uri>"
         }
     },
     "requestCooldown": 24
