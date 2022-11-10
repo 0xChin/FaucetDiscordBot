@@ -1,12 +1,12 @@
-# LW3 Faucet
+# Faucet Bot
 
-This project was made for [LearnWeb3DAO](https://learnweb3.io) as a project for a bountie of EarnWeb3. It uses the [Kevin Novak's Typescript Discord Bot Template](https://github.com/KevinNovak/Discord-Bot-TypeScript-Template).
+This project was made for [LearnWeb3DAO](https://learnweb3.io) for a bountie of EarnWeb3. It uses the [Kevin Novak's Typescript Discord Bot Template](https://github.com/KevinNovak/Discord-Bot-TypeScript-Template). I've made it a template and gave it some functionalities so you can add it in your own server :)
 
 ## Command Structure
 
 The Discord bot accepts a command that looks like this:
 
-`/faucet <network> <token>` and then disburse a predefined amount of funds (specific to that token on that network) to the ETH address associated with that person's Discord account.
+`/faucet <network> <token> <address>` and then disburse a predefined amount of funds (specific to that token on that network) to the address sent.
 
 ## Demo
 
@@ -32,7 +32,6 @@ Currently, the following networks are supported by default:
 
 -   Ethereum Goerli (ETH & LINK)
 -   Polygon Mumbai (MATIC & LINK)
--   Celo Alfajores (CELO)
 
 Anyways, it is possible to add any token of any network (EVM) by using the following interface:
 
@@ -56,10 +55,11 @@ interface Networks {
 
 ### Faucet:
 
--   People can request tokens via the `/faucet <network> <token>` command.
+-   People can request tokens via the `/faucet <network> <token> <address>` command.
 -   Embeds usage for better UI :).
 -   Validations with warning/error messages.
--   Cooldown for requesting tokens
+-   Cooldown for requesting tokens (based on Discord User ID).
+-   Easy to add/remove networks and tokens.
 
 ### Developer Friendly:
 
@@ -72,8 +72,7 @@ interface Networks {
 
 1. Copy example config files.
     - Navigate to the `config` folder of this project.
-    - Copy all files ending in `.example.json` and remove the `.example` from the copied file names.
-        - Ex: `config.example.json` should be copied and renamed as `config.json`.
+    - Copy the `config.example.json` as `config.json`.
 2. Obtain a bot token.
     - You'll need to create a new bot in your [Discord Developer Portal](https://discord.com/developers/applications/).
         - See [here](https://www.writebots.com/discord-bot-token/) for detailed instructions.
@@ -98,26 +97,6 @@ interface Networks {
     - Run `npm start` and let the faucet send funds to your students :).
 
 ## Support
-
-### Connecting to LW3 Backend:
-
-To send the address based on the Discord ID, you will need to connect to your backend. I've created a function in [faucet-utils.ts](https://github.com/AlanRacciatti/lw3-faucet/blob/main/src/utils/faucet-utils.ts) that you'll have to complete and then the bot will be ready to go
-
-```typescript
-export class FaucetUtils {
-    public static async getAddressFromId(id: string): Promise<string | null> {
-        // TODO: Connect to LW3 backend plz
-
-        return '0x6864dC5998c25Db320D3370A53592E44a246FFf4'; // chiin.eth :)
-    }
-
-    // More stuff here...
-}
-```
-
-### Adding new tokens/networks
-
-Supposing we have the following `networks` property in our `config.json`:
 
 ```json
 "networks": {
