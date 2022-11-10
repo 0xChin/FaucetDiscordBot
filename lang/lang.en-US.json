@@ -1,0 +1,160 @@
+{
+    "data": {
+        "faucetEmbeds": {
+            "transaction": {
+                "title": "{{COM:bot.name}} - Sending funds",
+                "description": "Sending {{amount}} {{token}} to address {{address}} on {{network}} network. [Transaction hash]({{link}})",
+                "color": "{{COM:colors.success}}"
+            },
+            "noBalance": {
+                "title": "{{COM:bot.name}} - Insufficient funds :(",
+                "description": "Faucet hasn't enough {{token}} on {{network}} network. We're sorry :(",
+                "color": "{{COM:colors.error}}"
+            },
+            "notAllowed": {
+                "title": "{{COM:bot.name}} - Request cooldown",
+                "description": "You must wait `{{nextRequest}}` until your next request of {{token}} on {{network}} network",
+                "color": "{{COM:colors.warning}}"
+            },
+            "notSupported": {
+                "title": "{{COM:bot.name}} - Token not supported",
+                "description": "You can't request {{token}} in {{network}} network",
+                "color": "{{COM:colors.warning}}"
+            }
+        },
+        "validationEmbeds": {
+            "cooldownHit": {
+                "description": "You can only run this command {{AMOUNT}} time(s) every {{INTERVAL}}. Please wait before attempting this command again.",
+                "color": "{{COM:colors.warning}}"
+            },
+            "missingClientPerms": {
+                "description": [
+                    "I don't have all permissions required to run that command here! Please check the server and channel permissions to make sure I have the following permissions.",
+                    "",
+                    "Required permissions: {{PERMISSIONS}}"
+                ],
+                "color": "{{COM:colors.warning}}"
+            }
+        },
+        "errorEmbeds": {
+            "command": {
+                "description": "Something went wrong!",
+                "fields": [
+                    {
+                        "name": "Error code",
+                        "value": "{{ERROR_CODE}}"
+                    },
+                    {
+                        "name": "Server ID",
+                        "value": "{{GUILD_ID}}"
+                    },
+                    {
+                        "name": "Shard ID",
+                        "value": "{{SHARD_ID}}"
+                    },
+                    {
+                        "name": "Contact support",
+                        "value": "{{COM:links.support}}"
+                    }
+                ],
+                "color": "{{COM:colors.error}}"
+            }
+        },
+        "channelRegexes": {
+            "bot": "/bot|command|cmd/i"
+        }
+    },
+    "refs": {
+        "meta": {
+            "translators": "[TranslatorName#1234](https://github.com/)"
+        },
+        "bot": {
+            "description": "{{REF:links.templateEmbed}} helps give developers a starting point for new Discord bots, so that much of the initial setup can be avoided and developers can instead focus on meaningful bot features."
+        },
+        "chatCommands": {
+            "faucet": "faucet"
+        },
+        "userCommands": {
+            "viewDateJoined": "View Date Joined"
+        },
+        "messageCommands": {
+            "viewDateSent": "View Date Sent"
+        },
+        "arguments": {
+            "option": "option",
+            "network": "network",
+            "token": "token"
+        },
+        "commandDescs": {
+            "faucet": "Request tokens for a network."
+        },
+        "argDescs": {
+            "network": "Network.",
+            "token": "Token."
+        },
+        "fields": {
+            "commands": "Commands",
+            "links": "Links"
+        },
+        "permissions": {
+            "AddReactions": "Add Reactions",
+            "Administrator": "Administrator",
+            "AttachFiles": "Attach Files",
+            "BanMembers": "Ban Members",
+            "ChangeNickname": "Change Nickname",
+            "Connect": "Connect",
+            "CreateInstantInvite": "Create Invite",
+            "CreatePrivateThreads": "Create Private Threads",
+            "CreatePublicThreads": "Create Public Threads",
+            "DeafenMembers": "Deafen Members",
+            "EmbedLinks": "Embed Links",
+            "KickMembers": "Kick Members",
+            "ManageChannels": "Manage Channel(s)",
+            "ManageEmojisAndStickers": "Manage Emoji and Stickers",
+            "ManageEvents": "Manage Events",
+            "ManageGuild": "Manage Server",
+            "ManageMessages": "Manage Messages",
+            "ManageNicknames": "Manage Nicknames",
+            "ManageRoles": "Manage Roles / Permissions",
+            "ManageThreads": "Manage Threads / Posts",
+            "ManageWebhooks": "Manage Webhooks",
+            "MentionEveryone": "Mention Everyone, Here, and All Roles",
+            "ModerateMembers": "Timeout Members",
+            "MoveMembers": "Move Members",
+            "MuteMembers": "Mute Members",
+            "PrioritySpeaker": "Priority Speaker",
+            "ReadMessageHistory": "Read Message History",
+            "RequestToSpeak": "Request to Speak",
+            "SendMessages": "Send Messages / Create Posts",
+            "SendMessagesInThreads": "Send Messages in Threads / Posts",
+            "SendTTSMessages": "Send Text-to-Speech Messages",
+            "Speak": "Speak",
+            "Stream": "Video",
+            "UseApplicationCommands": "Use Application Commands",
+            "UseEmbeddedActivities": "Use Activities",
+            "UseExternalEmojis": "Use External Emoji",
+            "UseExternalStickers": "Use External Stickers",
+            "UseVAD": "Use Voice Activity",
+            "ViewAuditLog": "View Audit Log",
+            "ViewChannel": "View Channel(s)",
+            "ViewGuildInsights": "View Server Insights"
+        },
+        "faucetNetworkOptions": {
+            "goerli": "goerli",
+            "mumbai": "mumbai",
+            "alfajores": "alfajores"
+        },
+        "faucetTokenOptions": {
+            "eth": "ETH",
+            "link": "LINK",
+            "matic": "MATIC",
+            "celo": "CELO"
+        },
+        "links": {
+            "authorEmbed": "[{{COM:bot.author}}]({{COM:links.author}})",
+            "supportEmbed": "[Join Support Server]({{COM:links.support}})",
+            "templateEmbed": "[Discord Bot TypeScript Template]({{COM:links.template}})",
+            "faucetTemplate": "[Faucet Bot Template]({{COM:link.faucetTemplate}}"
+        }
+    }
+}
