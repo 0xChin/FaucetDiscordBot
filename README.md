@@ -2,6 +2,8 @@
 
 This project was made for [LearnWeb3DAO](https://learnweb3.io) for a bountie of EarnWeb3. It uses the [Kevin Novak's Typescript Discord Bot Template](https://github.com/KevinNovak/Discord-Bot-TypeScript-Template). I've made it a template and gave it some functionalities so you can add it in your own server :)
 
+If you need support by my side don't hesitate in DMing me via Discord: Chiin#4895
+
 ## Command Structure
 
 The Discord bot accepts a command that looks like this:
