@@ -85,7 +85,7 @@ interface Networks {
         - `client.id` - Your discord bot's [user ID](https://techswift.org/2020/04/22/how-to-find-your-user-id-on-discord/).
         - `client.token` - Your discord bot's token.
         - `privateKey` - The private key of the account that will be sending funds. **Please be careful with the PK that you use, by my side, I've always done the tests with accounts that have funds only in testnets**
-        - `networks.{network}.nodeUri` - The URI to the node providers.
+        - `networks.{network}.nodeUri` - The URI to the node providers. You can find them in [Chainlist](https://chainlist.org/?testnets=true)
         - `database` - All fields in this object are for the database connection. Note: You can create a local database by running `docker-compose up -d` thanks to the `docker-compose.yml` file
 4. Install packages.
     - Navigate into the downloaded source files and type `npm install`.
