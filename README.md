@@ -1,6 +1,6 @@
 # Faucet Bot
 
-This project was made for [LearnWeb3DAO](https://learnweb3.io) for a bountie of EarnWeb3. It uses the [Kevin Novak's Typescript Discord Bot Template](https://github.com/KevinNovak/Discord-Bot-TypeScript-Template). I've made it a template and gave it some functionalities so you can add it in your own server :)
+Simple Discord Bot that allows token faucet. It uses the [Kevin Novak's Typescript Discord Bot Template](https://github.com/KevinNovak/Discord-Bot-TypeScript-Template). I've made it a template and gave it some functionalities so you can add it in your own server :)
 
 If you need support by my side don't hesitate in DMing me via Discord: Chiin#4895
 
@@ -67,8 +67,8 @@ interface Networks {
 
 -   Written with TypeScript.
 -   Uses the [discord.js](https://discord.js.org/) framework.
--   Built-in debugging setup for VSCode.
 -   Written with [ESM](https://nodejs.org/api/esm.html#introduction) for future compatibility with packages.
+-   Easy setup with Docker Compose.
 
 ## Setup
 
@@ -87,16 +87,8 @@ interface Networks {
         - `privateKey` - The private key of the account that will be sending funds. **Please be careful with the PK that you use, by my side, I've always done the tests with accounts that have funds only in testnets**
         - `networks.{network}.nodeUri` - The URI to the node providers. You can find them in [Chainlist](https://chainlist.org/?testnets=true)
         - `database` - All fields in this object are for the database connection. Note: You can create a local database by running `docker-compose up -d` thanks to the `docker-compose.yml` file
-4. Install packages.
-    - Navigate into the downloaded source files and type `npm install`.
-5. Register commands.
-    - In order to use slash commands, they first [have to be registered](https://discordjs.guide/interactions/slash-commands.html#registering-slash-commands).
-    - Type `npm run commands:register` to register the bot's commands.
-        - Run this script any time you change a command name, structure, or add/remove commands.
-        - This is so Discord knows what your commands look like.
-        - It may take up to an hour for command changes to appear.
-6. Start the bot.
-    - Run `npm start` and let the faucet send funds to your students :).
+4. Start the bot.
+    - Run `docker-compose build` followed by `docker-compose up` and let the faucet send funds to your community :).
 
 ## Support
 
