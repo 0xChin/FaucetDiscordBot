@@ -1,4 +1,3 @@
-import { CeloProvider, CeloWallet } from '@celo-tools/celo-ethers-wrapper';
 import { BigNumber, Contract, ethers, providers, Wallet } from 'ethers';
 import { createRequire } from 'node:module';
 
@@ -16,15 +15,8 @@ export class EthersUtils {
     private static async getSigner(network: string): Promise<Wallet> {
         let signer: Wallet;
 
-        if (network === 'ALFAJORES') { // Celo needs a specific provider, it sucks right?
-            const provider = new CeloProvider(networks[network].nodeUri);
-            await provider.ready;
-            signer = new CeloWallet(privateKey, provider);
-
-        } else {
-            const provider: providers.StaticJsonRpcProvider = new ethers.providers.StaticJsonRpcProvider(networks[network].nodeUri, networks[network].chainId);
-            signer = new ethers.Wallet(privateKey, provider);
-        }
+        const provider: providers.StaticJsonRpcProvider = new ethers.providers.StaticJsonRpcProvider(networks[network].nodeUri, networks[network].chainId);
+        signer = new ethers.Wallet(privateKey, provider);
 
         return signer;
     }

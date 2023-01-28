@@ -142,14 +142,12 @@
         },
         "faucetNetworkOptions": {
             "goerli": "goerli",
-            "mumbai": "mumbai",
-            "alfajores": "alfajores"
+            "mumbai": "mumbai"
         },
         "faucetTokenOptions": {
             "eth": "ETH",
             "link": "LINK",
-            "matic": "MATIC",
-            "celo": "CELO"
+            "matic": "MATIC"
         },
         "links": {
             "authorEmbed": "[{{COM:bot.author}}]({{COM:links.author}})",
