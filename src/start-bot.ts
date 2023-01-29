@@ -3,19 +3,12 @@ import { Options, Partials } from 'discord.js';
 import { createRequire } from 'node:module';
 
 import { FaucetCommand } from './commands/chat/index.js';
-import {
-    ChatCommandMetadata,
-    Command
-} from './commands/index.js';
+import { ChatCommandMetadata, Command } from './commands/index.js';
 import { InitializeDb } from './database/index.js';
 import { CommandHandler } from './events/command-handler.js';
 import { CustomClient } from './extensions/index.js';
 import { Bot } from './models/bot.js';
-import {
-    CommandRegistrationService,
-    EventDataService,
-    Logger
-} from './services/index.js';
+import { CommandRegistrationService, EventDataService, Logger } from './services/index.js';
 
 const require = createRequire(import.meta.url);
 let Config = require('../config/config.json');
@@ -38,22 +31,18 @@ async function start(): Promise<void> {
     });
 
     // Commands
-    let commands: Command[] = [
-        new FaucetCommand(),
-    ];
+    let commands: Command[] = [new FaucetCommand()];
 
     // Event handlers
     let commandHandler = new CommandHandler(commands, eventDataService);
 
     // Database
-    InitializeDb();
+    if (process.argv[2] !== 'commands') {
+        await InitializeDb();
+    }
 
     // Bot
-    let bot = new Bot(
-        Config.client.token,
-        client,
-        commandHandler,
-    );
+    let bot = new Bot(Config.client.token, client, commandHandler);
 
     // Register
     if (process.argv[2] == 'commands') {
