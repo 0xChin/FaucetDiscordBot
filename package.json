@@ -50,6 +50,7 @@
         "pino": "8.6.1",
         "pino-pretty": "9.1.1",
         "pm2": "^5.2.0",
+        "prom-client": "^14.1.1",
         "reflect-metadata": "^0.1.13",
         "remove-markdown": "0.5.0",
         "typeorm": "^0.3.10"

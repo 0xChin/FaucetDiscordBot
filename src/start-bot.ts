@@ -8,7 +8,7 @@ import { InitializeDb } from './database/index.js';
 import { CommandHandler } from './events/command-handler.js';
 import { CustomClient } from './extensions/index.js';
 import { Bot } from './models/bot.js';
-import { CommandRegistrationService, EventDataService, Logger } from './services/index.js';
+import { CommandRegistrationService, EventDataService, Logger, Metrics } from './services/index.js';
 
 const require = createRequire(import.meta.url);
 let Config = require('../config/config.json');
@@ -35,6 +35,9 @@ async function start(): Promise<void> {
 
     // Event handlers
     let commandHandler = new CommandHandler(commands, eventDataService);
+
+    // Dashboard
+    new Metrics();
 
     // Database
     if (process.argv[2] !== 'commands') {
